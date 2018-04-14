@@ -25,7 +25,7 @@ def products():
     if request.method == 'GET':
         #print(product_list)
         #print(request.args['name'])
-        match_prod=db.products.find({'Name':  request.args['Name']})
+        match_prod=db.products.find({'Name': {"$regex": request.args['name']}})
         matches=[]
 
         for prod in match_prod:
